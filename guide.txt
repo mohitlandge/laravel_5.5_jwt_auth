@@ -1,0 +1,41 @@
+steps to be followed for JWT authentication in laravel
+1)To install laravel 5.5 version
+=>composer create-project --prefer-dist laravel/laravel laravel_jwt_auth "5.5*"
+2)To install jwt auth package
+=>composer require tymon/jwt-auth:1.0.0-rc3
+To ignore platform issue
+=>composer require tymon/jwt-auth --ignore-platform
+3)To load the config files of the jwt.
+->php artisan vendor:publish
+selecte the jwt sr no on enter.
+4)To generate jwt secret
+=>php artisan jwt:secret
+5)make changes in User.php
+6)Change driver for api from token to jwt in the auth.php file.
+7)create new logincontroller for authentication using jwt.
+at path Api/Auth/LOginController.php
+8) we can easily replace the default guard from web to api, but this will make api guard as default so we won't be able to use the web authentication.
+Therefor we are creating new login controller to handle our api authentication functionality with JWT.
+
+=>stopped in between.
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------
+1)Add the tymon/jwt in service providers of the config/app.php
+2)php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider
+3)php artisan jwt:secret
+4)php artisan migrate
+5)update user model
+implement and use JWTSubject in model.
+add the methods getJWTIdentifier() & getJWTCustomClaims()
+6)make changes in auth.php set default driver as api
+7)Create route and function related to the routes.
+8) I have created the login, create user, logout, userlist, getProfile, refreshToken API, you can find the collection in the project folder.
+
+=>completed the project
